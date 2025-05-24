@@ -1,0 +1,67 @@
+contact_book = {}
+
+def add_entry():
+    person_name = input("Enter name: ")
+    phone_number = input("Enter phone number: ")
+    contact_book[person_name] = phone_number
+    print(f"Entry for {person_name} added.")
+
+def view_entries():
+    if not contact_book:
+        print("No entries found.")
+        return
+    for person_name, phone_number in contact_book.items():
+        print(f"Name: {person_name}, Phone: {phone_number}")
+
+def search_entry():
+    person_name = input("Enter name to search: ")
+    if person_name in contact_book:
+        print(f"Found entry: Name: {person_name}, Phone: {contact_book[person_name]}")
+    else:
+        print("Entry not found.")
+
+def update_entry():
+    person_name = input("Enter name to update: ")
+    if person_name in contact_book:
+        new_phone_number = input("Enter new phone number: ")
+        contact_book[person_name] = new_phone_number
+        print(f"Entry for {person_name} updated.")
+    else:
+        print("Entry not found.")
+
+def delete_entry():
+    person_name = input("Enter name to delete: ")
+    if person_name in contact_book:
+        del contact_book[person_name]
+        print(f"Entry for {person_name} deleted.")
+    else:
+        print("Entry not found.")
+
+def show_menu():
+    while True:
+        print("\n1. Add Entry")
+        print("2. View Entries")
+        print("3. Search Entry")
+        print("4. Update Entry")
+        print("5. Delete Entry")
+        print("6. Exit")
+        
+        user_choice = input("Choose an option (1-6): ")
+
+        if user_choice == "1":
+            add_entry()
+        elif user_choice == "2":
+            view_entries()
+        elif user_choice == "3":
+            search_entry()
+        elif user_choice == "4":
+            update_entry()
+        elif user_choice == "5":
+            delete_entry()
+        elif user_choice == "6":
+            print("Bye!")
+            break
+        else:
+            print("Invalid choice, try again.")
+
+show_menu()
